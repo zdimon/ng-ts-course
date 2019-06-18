@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head><title>TypeScript Learning</title></head>
+    <body>
+
+
+        <input id="myinput" /><button id="mybtn">Click</button>
+
+
+        <script src="/node_modules/systemjs/dist/system.js"></script>
+        <script src="/node_modules/typescript/lib/typescript.js"></script>
+        <script>
+            System.config({
+                defaultJSExtensions: true,
+                paths: {
+                'jquery' :'./node_modules/jquery/dist/jquery.min.js',
+                }
+            });
+            System
+              .import('built/main.js')
+              .then(null, console.error.bind(console));
+        </script>
+
+
+        
+
+
+
+    </body>
+</html>
+
