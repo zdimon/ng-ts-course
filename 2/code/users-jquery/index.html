@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head><title>User list</title></head>
+    <body>
+
+
+       <!--Место вывода списка -->
+       <ul id="user_list"></ul>
+
+        <script src="/node_modules/systemjs/dist/system.js"></script>
+        <script src="/node_modules/typescript/lib/typescript.js"></script>
+        <script>
+
+            
+                // Использование откомпилированного приложения
+            
+
+            System.config({
+                defaultJSExtensions: true,
+                paths: {
+                    'jquery' :'./node_modules/jquery/dist/jquery.min.js',
+                }
+            });
+            System
+              .import('built/main_cls.js')
+              .then(null, console.error.bind(console));
+            
+              /*
+              
+              //Транспиляция на лету
+            System.config({
+                transpiler: 'typescript',
+                //defaultJSExtensions: true,
+                paths: {
+                    'jquery' :'./node_modules/jquery/dist/jquery.min.js',
+                },                
+                packages: {
+                src: {
+                      defaultExtension: 'ts',
+                      main: 'main.ts',
+                    }
+                }
+            });
+            System
+              .import('src')
+              .then(function(m){
+                  console.log(m);
+              }, console.error.bind(console));
+            */
+        </script>
+
+
+        
+
+
+
+    </body>
+</html>
+

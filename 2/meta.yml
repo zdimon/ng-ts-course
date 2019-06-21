@@ -1,0 +1,52 @@
+slug: typescript
+name: Урок 2. Работа со списком пользователей.
+meta_title: Урок 2. Работа со списком пользователей.
+meta_keywords: Урок 2. Работа со списком пользователей.
+meta_description: Урок 2. Работа со списком пользователей.
+is_active: true
+desc: |
+
+        
+files:
+
+    -
+        file:     'users-jquery.md'
+        title: 'Работа со списком на jQuery и объектах.'
+        meta_title: 'Работа со списком на jQuery и объектах.'
+        meta_desc:   'Работа со списком на jQuery и объектах.'
+        meta_keywords: 'Работа со списком на jQuery и объектах.'
+        desc: |
+                
+            
+    -
+        file:     'users-jquery-class.md'
+        title: 'Работа со списком на jQuery и классах.'
+        meta_title: 'Работа со списком на jQuery и классах.'
+        meta_desc:   'Работа со списком на jQuery и классах.'
+        meta_keywords: 'Работа со списком на jQuery и классах.'
+        desc: |
+      
+      
+    -
+        file:     'users-ng.md'
+        title: 'Работа со списком Angular.'
+        meta_title: 'Работа со списком Angular.'
+        meta_desc:   'Работа со списком Angular.'
+        meta_keywords: 'Работа со списком Angular.'
+        desc: |     
+        
+    -
+        file:     'home.md'
+        title: 'Домашнее задание.'
+        meta_title: 'Домашнее задание.'
+        meta_desc:   'Домашнее задание.'
+        meta_keywords: 'Домашнее задание.'
+        desc: |     
+               
+
+  
+        
+        
+        
+        
+        

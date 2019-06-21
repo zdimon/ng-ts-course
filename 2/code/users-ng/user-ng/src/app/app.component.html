@@ -1,0 +1,17 @@
+<table border=1>
+  <tr>
+    <td>Имя</td>
+    <td>email</td>
+    <td>Действия</td>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{ user.username  }}</td>
+    <td>{{ user.email  }}</td>
+    <td><a href="#" (click)="delete(user.id)" >Удалить</a></td>
+  </tr>
+</table>
+<form>
+  <input [(ngModel)]="username" name="username" />
+  <input name="email" />
+  <button (click)="add()" >Добавить</button>
+</form>
