@@ -1,0 +1,51 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Document</title>
+</head>
+<body>
+
+<!-- HTML block -->
+<div class="container">
+<table class='table table-hovered'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody id='user_list'>
+<!-- expand data -->
+  </tbody>
+</table>
+</div>
+
+<!-- Script block -->
+
+  <script src="./node_modules/systemjs/dist/system.js" charset="utf-8"></script>
+  <script src="./node_modules/typescript/lib/typescript.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    System.config({
+      transpiler:'typescript',
+      paths:{
+        'jquery':'./node_modules/jquery/dist/jquery.js'
+      },
+      packages:{
+        src:{
+          defaultExtension:'ts',
+          main:'main.ts'
+        }
+      }
+    });
+    System.import('src').then(function(mes){/*console.log(mes);*/},console.error.bind(console));
+  </script>
+
+</body>
+</html>

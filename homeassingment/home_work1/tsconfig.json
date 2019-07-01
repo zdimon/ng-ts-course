@@ -1,0 +1,20 @@
+{
+  "compilerOptions":{
+    "allowSyntheticDefaultImports":true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators":true,
+    "module":"system",
+    "target":"ES5",
+    "outDir":"build",
+    "rootDir":"src"
+  },
+
+    "include":[
+      "**/*"
+    ],
+    "exclude":[
+      "node_modules",
+      "**/*.spec.ts"
+    ]
+  
+}
