@@ -7,6 +7,33 @@ class User {
   age: number;
 }
 
+
+
+const DB = [{
+  id: 0,
+  username: 'Admin',
+  email: 'admin@gmail.com',
+  age: 30
+},
+  {
+    id: 1,
+    username: 'Kevin',
+    email: 'shindel@bk.ru',
+    age: 33
+  },
+  {
+    id: 2,
+    username: 'Dima',
+    email: 'zdimon77@gmail.com',
+    age: 40
+  },
+  {
+    id: 3,
+    username: 'Username',
+    email: 'some@email.com',
+    age: 99
+  }];
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,30 +41,7 @@ class User {
 })
 
 export class AppComponent {
-  users: User[] = [{
-    id: 0,
-    username: 'Admin',
-    email: 'admin@gmail.com',
-    age: 30
-  },
-    {
-      id: 1,
-      username: 'Kevin',
-      email: 'shindel@bk.ru',
-      age: 33
-    },
-    {
-      id: 2,
-      username: 'Dima',
-      email: 'zdimon77@gmail.com',
-      age: 40
-    },
-    {
-      id: 3,
-      username: 'Username',
-      email: 'some@email.com',
-      age: 99
-    }];
+  users: User[] = Object.assign([], DB);
 
   username: string;
   email: string;
@@ -61,16 +65,19 @@ export class AppComponent {
 
   // TODO: Как реализовать поиск?
   search(emailSearch: string) {
-    for (const user of this.users) {
+    this.users = [];
+    for (const user of DB) {
       const ID: number = this.users.length;
-      if (emailSearch === user.email) {
+      if ( user.email.indexOf(emailSearch) != -1) {
             // DO SOMETHING
-            alert(`User found! ${user.username}`);
+            let index: number = DB.indexOf(user);
+            this.users.push(DB[index]);
       }
     }
+
   }
   // TODO: Как реализовать очистку поиска?
-  clear() {
-    return true;
+  clear(): void {
+    this.users = Object.assign([], DB);
   }
 }
