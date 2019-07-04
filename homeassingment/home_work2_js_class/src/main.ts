@@ -1,9 +1,9 @@
 import { some } from './export_lib'
-import * as JQuery from "jquery";
-const $ = JQuery.default;
+import $ from "jquery";
+//const $ = JQuery.default;
 
 // Определяем модель
-let app: any = {}
+//let app: any = {}
 
 // Определяем класс пользователя
 class User{
@@ -14,8 +14,8 @@ class User{
 }
 
 // Определяем класс приложения
-class App{
-  users: User = [{
+class App {
+  users: Array<User> = [{
     'id':0,
     'username':'Dima',
     'email':'zdimon77@gmail.com',
@@ -30,8 +30,8 @@ class App{
   {
     'id': 2,
     'username': 'Dima',
-    'email': 'zdimon77@gmail.com'
-      'age': '40'
+    'email': 'zdimon77@gmail.com',
+    'age': 40
   },
   {
     'id': 3,
@@ -54,6 +54,24 @@ class App{
     this.clear_search = $('#clean_btn');
     this.update();
 
+  // Создаём события
+
+  this.add_user.on('click', (e) => {
+    let username: string = <string>$('#username').val();
+    let email: string = <string>$('#email').val();
+    let age: number = <number>$('#age').val();
+    this.add(username,email,age);
+    //this.add(<string>$('#username').val(), <string>$('#email').val(), <number>$('#age').val());
+  });
+
+  this.search_user.on('click', (e) => {
+    this.search($('#search_input').val())
+  });
+
+  this.clear_search.on('click', (e) => {
+    this.update()
+  });
+
   }
 
   // Определяем прорисовку приложения
@@ -72,29 +90,16 @@ class App{
 
       this.user_list .append(row)
   }
-
-  // Создаём события
-    this.user_list.find('button').on('click', (e) => {
-      this.delete(parseInt($(e.target).attr('id')));
-    });
-
-    this.add_user.on('click', (e) => {
-      this.add($('#username').val(), $('#email').val(), $('#age').val())
-    });
-
-    this.search_user.on('click', (e) => {
-      this.search($('#search_input').val())
-    });
-
-    this.clear_search.on('click', (e) => {
-      this.update()
-    });
+  // цепляем событие на удаление
+  this.user_list.find('button').on('click', (e) => {
+    this.delete(parseInt($(e.target).attr('id')));
+  });
 }
 
 // Удаление пользователя
 delete(user_id:number) {
   for (let user of this.users) {
-    if user_id == user.id {
+    if (user_id == user.id) {
       let idx = this.users.indexOf(user)
       this.users.splice(idx, 1);
       this.update();
@@ -114,10 +119,10 @@ add(username:string, email:string, age:number){
 search(email) {
   this.user_list.empty()
   for (let user of this.users) {
-    if email == user.email {
+    if (user.email.indexOf(email) > -1) {
       let row = `<tr>
                     <td>${user.id}</td>
-                    <td>${user.name}</td>
+                    <td>${user.username}</td>
                     <td>${user.email}</td>
                     <td>${user.age}</td>
                     <td>
@@ -129,7 +134,7 @@ search(email) {
       alert(`User found! ${user.username}`)
     }
   }
+ }
 }
-
 // Создаём экземпляр класса
-let app = new App();
+const app = new App();
