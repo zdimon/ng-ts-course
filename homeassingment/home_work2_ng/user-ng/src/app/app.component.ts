@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 class User {
   id: number;
@@ -9,30 +10,7 @@ class User {
 
 
 
-const DB = [{
-  id: 0,
-  username: 'Admin',
-  email: 'admin@gmail.com',
-  age: 30
-},
-  {
-    id: 1,
-    username: 'Kevin',
-    email: 'shindel@bk.ru',
-    age: 33
-  },
-  {
-    id: 2,
-    username: 'Dima',
-    email: 'zdimon77@gmail.com',
-    age: 40
-  },
-  {
-    id: 3,
-    username: 'Username',
-    email: 'some@email.com',
-    age: 99
-  }];
+
 
 @Component({
   selector: 'app-root',
@@ -41,11 +19,29 @@ const DB = [{
 })
 
 export class AppComponent {
-  users: User[] = Object.assign([], DB);
+  users: User[] = [];
 
-  username: string;
-  email: string;
-  age: number;
+  constructor(private http: HttpClient) {
+    this.getUsers();
+  }
+
+  getUsers(){
+    let ff = this.http.get('http://localhost:8083/').subscribe((res: any)=>{
+      this.users = res;
+   })
+   ff.unsubscribe();
+  }
+
+  //username: string;
+  //email: string;
+  //age: number;
+  user: User = {
+    id: 0,
+    username: 'null',
+    email: 'null',
+    age: 0
+  }
+
   searchInput: string;
 
 
@@ -60,24 +56,33 @@ export class AppComponent {
 
   add() {
     const ID: number = this.users.length;
-    this.users.push({ id: ID, username: this.username, email: this.email, age: this.age });
+    this.users.push({
+      id: this.user.id,
+      username: this.user.username,
+      email: this.user.email,
+      age: this.user.age
+    });
+  }
+
+  edit(user: User){
+    this.user= user;
   }
 
   // TODO: Как реализовать поиск?
   search(emailSearch: string) {
     this.users = [];
-    for (const user of DB) {
+    for (const user of this.users) {
       const ID: number = this.users.length;
       if ( user.email.indexOf(emailSearch) != -1) {
             // DO SOMETHING
-            let index: number = DB.indexOf(user);
-            this.users.push(DB[index]);
+            //let index: number = DB.indexOf(user);
+            //this.users.push(DB[index]);
       }
     }
 
   }
   // TODO: Как реализовать очистку поиска?
   clear(): void {
-    this.users = Object.assign([], DB);
+    this.getUsers();
   }
 }

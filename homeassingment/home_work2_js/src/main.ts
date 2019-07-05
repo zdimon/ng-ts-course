@@ -1,6 +1,6 @@
-import { some } from './export_lib'
-import * as JQuery from "jquery";
-const $ = JQuery.default;
+import { some } from './export_lib';
+import $ from "jquery";
+//const $ = JQuery.default;
 
 // Определяем модель
 let app: any = {}
@@ -15,7 +15,7 @@ app.data = [{
 {
   'id': 2,
   'name': 'Dima',
-  'email': 'zdimon77@gmail.com'
+  'email': 'zdimon77@gmail.com',
     'age': '40'
 },
 {
@@ -32,6 +32,9 @@ app.init = function() {
   this.search_user = $('#search_btn');
   this.clear_search = $('#clean_btn');
   this.update();
+  this.add_user.on('click', (e) => {
+    this.add.call(this, $('#username').val(), $('#email').val(), $('#age').val())
+  });
 }
 
 // Метод обновления списка
@@ -55,9 +58,7 @@ app.update = function(): void {
     this.delete.call(this, $(e.target).attr('id'));
   });
 
-  this.add_user.on('click', (e) => {
-    this.add.call(this, $('#username').val(), $('#email').val(), $('#age').val())
-  });
+
 
   this.search_user.on('click', (e) => {
     this.search.call(this, $('#search_input').val())
@@ -73,8 +74,8 @@ app.update = function(): void {
 app.delete = function(user_id) {
   // var that = this;
   for (let user of this.data) {
-    if user_id == user.id {
-      let idx = this.data.indexOf(user;)
+    if (user_id == user.id) {
+      let idx = this.data.indexOf(user)
       this.data.splice(idx, 1);
       this.update();
     }
@@ -85,8 +86,9 @@ app.delete = function(user_id) {
 // Что то пошло не так! ))))
 
 app.add = function(username, email, age) {
+  console.log(username);
   let id = this.data.length;
-  this.data.push({ 'id': id, 'username': username, 'email': email, 'age': age })
+  this.data.push({ 'id': id, 'name': username, 'email': email, 'age': age })
   this.update();
 };
 
@@ -94,7 +96,7 @@ app.add = function(username, email, age) {
 app.search = function(email) {
   this.user_list.empty()
   for (let user of this.data) {
-    if email == user.email {
+    if (user.email.indexOf(email) != -1) {
       let row = `<tr>
                     <td>${user.id}</td>
                     <td>${user.name}</td>
