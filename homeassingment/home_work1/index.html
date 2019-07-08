@@ -14,20 +14,20 @@
 
   <div class="container border rounded shadow mt-2 pt-2">
     <h2>Калькулятор</h2>
-    <form action="">
+    <form action="" >
       <div class="form-row">
 
 
         <div class="col-md-3">
-          <input type="number" class="form-control" id="leftOp" placeholder="Введите число">
+          <input type="number" class="form-control" id="leftOp" placeholder="Введите число" />
           <p class="help-block">Левый операнд</p>
         </div>
 
-        <div class="col-md-3 text-center">
-          <button type='button' class="btn btn-primary" class='form-control' id='plus'>+</button>
-          <button type='button' class="btn btn-primary" class='form-control' id='minus'>-</button>
-          <button type='button' class="btn btn-primary" class='form-control' id='multiplication'>*</button>
-          <button type='button' class="btn btn-primary" class='form-control' id='divine'>/</button>
+        <div class="col-md-3 text-center" id="buttonBlock">
+          <button type='button' class='btn btn-primary ' >+</button>
+          <button type='button' class='btn btn-primary ' >-</button>
+          <button type='button' class='btn btn-primary ' >*</button>
+          <button type='button' class='btn btn-primary ' >/</button>
         </div>
 
         <div class="col-md-3">
@@ -62,7 +62,7 @@
         }
       }
     });
-    System.import('src').then(function(mes){/*console.log(mes);*/},console.error.bind(console));
+    System.import('src').then(function(mes){/*console.log(mes)*/;},console.error.bind(console));
   </script>
 
 </body>

@@ -5,10 +5,13 @@
   "main": "main.js",
   "dependencies": {
     "jquery": "^3.4.1",
+    "lite-server": "^2.5.3",
     "systemjs": "^0.19.22",
     "typescript": "^3.5.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/jquery": "^3.3.30"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
