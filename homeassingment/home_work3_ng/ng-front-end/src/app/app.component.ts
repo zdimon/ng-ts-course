@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import {UserService} from './service.service';
 // Определяем хост и порт
 // const host = 'http://localhost:';
 // const port = 8083;
@@ -21,25 +21,35 @@ class User {
 export class AppComponent {
   // searchInput: string;
   users: User[] = [];
-  user: User = {
-    id: 0,
-    username: 'null',
-    email: 'null',
-    age: 0
-  };
+  user: User;
 
-  constructor(private http: HttpClient) {
+  clearUser(){
+    this.user = {
+      id: 0,
+      username: 'null',
+      email: 'null',
+      age: 0
+    };
+  }
+
+  constructor(private http: HttpClient, private http_service: UserService) {
+    this.clearUser()
     this.getUsers();
+    this.http_service.getUsers();
   }
 
   getUsers() {
     // TODO: Не отрабатывает GET запрос!
     // Подставил переменные для хоста и порта
     // const data = this.http.get(`${host}${port}`).subscribe((res: any) => {
-    const data = this.http.get('http://localhost:8083/').subscribe((res: any) => {
+
+    const data = this.http_service.getUsers().subscribe((res: any) => {
       this.users = res;
+      data.unsubscribe();
     });
-    data.unsubscribe();
+
+
+
   }
 
 
@@ -59,10 +69,12 @@ export class AppComponent {
   }
 
   // Метод сохранения данных формы
-  // save(user: User) {
-  //  Нужно отправить запрос на сервер с целью сохранения пользователя
-
-
+   save(user: User) {
+     const req = this.http.post('http://localhost:8083/',this.user).subscribe((res: User)=>{
+       this.clearUser();
+       req.unsubscribe();
+     });
+   }
   // delete(user: User) {
     // Реализовать метод удаления на сервере
   // }
