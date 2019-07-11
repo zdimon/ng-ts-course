@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {UserService} from './service.service';
+
 // Определяем хост и порт
-// const host = 'http://localhost:';
-// const port = 8083;
+const host = 'http://localhost:';
+const port = 8083;
 
 class User {
   id: number;
@@ -19,66 +20,66 @@ class User {
 })
 
 export class AppComponent {
-  // searchInput: string;
+  searchInput: string;
   users: User[] = [];
   user: User;
 
-  clearUser(){
+  clearUser() {
     this.user = {
       id: 0,
-      username: 'null',
-      email: 'null',
+      username: '',
+      email: '',
       age: 0
     };
   }
 
-  constructor(private http: HttpClient, private http_service: UserService) {
-    this.clearUser()
+  constructor(private http: HttpClient, private httpService: UserService) {
+    this.clearUser();
     this.getUsers();
-    this.http_service.getUsers();
+    this.httpService.getUsers();
   }
 
+  // Метод получения пользователей
   getUsers() {
-    // TODO: Не отрабатывает GET запрос!
-    // Подставил переменные для хоста и порта
-    // const data = this.http.get(`${host}${port}`).subscribe((res: any) => {
-
-    const data = this.http_service.getUsers().subscribe((res: any) => {
+    const data = this.http.get(`${host}${port}`).subscribe((res: any) => {
       this.users = res;
       data.unsubscribe();
     });
-
-
-
   }
 
-
-
-  add() {
-    const ID: number = this.users.length;
-    this.users.push({
-      id: this.user.id,
-      username: this.user.username,
-      email: this.user.email,
-      age: this.user.age
+  // Метод добавления пользователя
+  add(user: User) {
+    this.user.id = this.users.length;
+    const req = this.http.put('http://localhost:8083/', this.user).subscribe((res: User) => {
+      req.unsubscribe();
+      this.clearUser();
+      this.getUsers();
     });
   }
 
+  // Метод редактирования пользователя
   edit(user: User) {
     this.user = user;
   }
 
   // Метод сохранения данных формы
    save(user: User) {
-     const req = this.http.post('http://localhost:8083/',this.user).subscribe((res: User)=>{
+     const req = this.http.post('http://localhost:8083/', this.user).subscribe((res: User) => {
        this.clearUser();
        req.unsubscribe();
      });
    }
-  // delete(user: User) {
-    // Реализовать метод удаления на сервере
-  // }
 
+   // Метод удаления пользователя
+   delete(user: User) {
+     const req = this.http.post('http://localhost:8083/delete', user).subscribe((res: User) => {
+       req.unsubscribe();
+       this.getUsers();
+     });
+
+  }
+
+  // Метод поиска по емейлу
 //   search(emailSearch: string) {
 //     this.users = [];
 //     for (const user of this.users) {
@@ -89,6 +90,7 @@ export class AppComponent {
 //     }
 //
 //   }
+
   clear(): void {
     this.getUsers();
   }

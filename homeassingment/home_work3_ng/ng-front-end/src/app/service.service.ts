@@ -8,11 +8,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(){
+  getUsers() {
     return this.http.get('http://localhost:8083/');
   }
-
-
 
   getUsersPromise(){
     return this.http.get('http://localhost:8083/').toPromise();

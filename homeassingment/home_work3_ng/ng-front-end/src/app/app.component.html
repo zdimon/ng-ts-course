@@ -19,8 +19,8 @@
       <td>{{user.age}}</td>
       <td>
         <div class="btn-group">
-        <button (click)="delete(user)" class='btn btn-sm btn-warning'>Delete</button>
-        <button class='btn btn-sm btn-danger' (click)="edit(user)">  Edit </button>
+          <button class='btn btn-sm btn-warning' (click)="edit(user)"> Edit </button>
+        <button (click)="delete(user)" class='btn btn-sm btn-danger'>Delete</button>
       </div>
       </td>
     </tr>
@@ -32,7 +32,27 @@
 <!-- ADD USERS -->
 <div class="container border p-4 shadow">
   <h2>Add users</h2>
-  <app-form [user] = "user"></app-form>
+<!--  <app-form [user] = "user"></app-form>-->
+  <form action="">
+    <p>
+      <label for="username">Username</label>
+      <input [(ngModel)]='user.username' name='username' id='username' type="text" class='form-control' placeholder='Username'>
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input [(ngModel)]='user.email' name='email' type="text" id='email' class='form-control' placeholder='Email'>
+    </p>
+    <p>
+      <label for="username">Age</label>
+      <input [(ngModel)]='user.age' name='age' type="number" id='age' class='form-control' placeholder='Age'>
+    </p>
+    <br>
+    <p>
+      <button (click)="add()" class='btn btn-primary' type='button' *ngIf="user.id==0">Add user</button>
+      <button (click)="save()" class='btn btn-outline-warning' *ngIf="user.id!=0">Save</button>
+    </p>
+  </form>
+
 
 </div>
 <br>

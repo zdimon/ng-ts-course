@@ -17,10 +17,14 @@ export class App {
         this.app.use(function(request: express.Request, response:express.Response, next:any){
             response.header("Access-Control-Allow-Headers", "Origin,X-Requested-With, Content-Type, Accept");
             response.header("Access-Control-Allow-Origin", "*");
+
+            // Добавляем методы для обхода CORS
+            response.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
             next();
         });
 
-        // Роутинг корневой страницы
+
+        // Прослушка пути для отдачи пользователей
         this.app.get('/', ( request: express.Request, response: express.Response) => {
             fs.readFile('DB.json','utf8',(err,res)=>{             
                 let data = JSON.parse(res);
@@ -28,37 +32,72 @@ export class App {
             });
         })
 
+        this.app.put('/', ( request: express.Request, response: express.Response) => {
+            this.addUser(request.body);
+            fs.readFile('DB.json','utf8',(err,res)=>{
+                let data = JSON.parse(res);
+                response.send(data);
+            });
+        })
+
+        // Прослушка пути для сохранения
         this.app.post('/', ( request: express.Request, response: express.Response) => {
-            //console.log(request.body);
             this.saveUser(request.body);
+            response.send({status: 'ok'});
+        })
+
+        // Прослушка пути для удаления
+        this.app.post('/delete', ( request: express.Request, response: express.Response) => {
+            this.deleteUser(request.body);
             response.send({status: 'ok'});
         })
 
 
     }
 
-    saveDB(data: any){
+    static saveDB(data: any){
         fs.writeFileSync('DB.json',JSON.stringify(data));
     }
 
+    // Метод сохранения в БД
     saveUser(user: any){
         fs.readFile('DB.json','utf8',(err,res)=>{             
             let data = JSON.parse(res);
-            //console.log(res);
             for (let u of data){
                if(u.id==user.id){
                 console.log(u);
                 let idx = data.indexOf(u);
-                
                 data.splice(idx,1);
                 data.push(user);
                }
-               
             }
-            this.saveDB(data);
+            App.saveDB(data);
         });        
     }
 
+    // Метод добавления в БД
+    addUser(user: any){
+        fs.readFile('DB.json','utf8',(err,res)=>{
+            let data = JSON.parse(res);
+            data.push(user);
+            App.saveDB(data);
+        });
+    }
+
+    // Метод удаления из ДБ
+    deleteUser(user: any){
+        fs.readFile('DB.json','utf8',(err,res)=>{
+            let data = JSON.parse(res);
+            for (let u of data){
+                if(u.id==user.id){
+                    console.log(u);
+                    let idx = data.indexOf(u);
+                    data.splice(idx,1);
+                }
+            }
+            App.saveDB(data);
+        });
+    }
 }
 
 export default new App().app
