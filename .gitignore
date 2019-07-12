@@ -1,3 +1,5 @@
 node_modules/
 *.js
 package-lock.json
+back_node_modules/
+front_node_modules/
