@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {UserService} from './service.service';
+import { UserService } from './service.service';
 
 // Определяем хост и порт
 const host = 'http://localhost:';
@@ -40,6 +40,7 @@ export class AppComponent {
   }
 
   // Метод получения пользователей
+  // TODO: Вынести в сервисы?
   getUsers() {
     const data = this.http.get(`${host}${port}`).subscribe((res: any) => {
       this.users = res;
@@ -48,9 +49,10 @@ export class AppComponent {
   }
 
   // Метод добавления пользователя
+  // TODO: Вынести в сервисы?
   add(user: User) {
     this.user.id = this.users.length;
-    const req = this.http.put('http://localhost:8083/', this.user).subscribe((res: User) => {
+    const req = this.http.put(`${host}${port}`, this.user).subscribe((res: User) => {
       req.unsubscribe();
       this.clearUser();
       this.getUsers();
@@ -63,21 +65,25 @@ export class AppComponent {
   }
 
   // Метод сохранения данных формы
+  // TODO: Вынести в сервисы?
    save(user: User) {
-     const req = this.http.post('http://localhost:8083/', this.user).subscribe((res: User) => {
+     const req = this.http.post(`${host}${port}`, this.user).subscribe((res: User) => {
        this.clearUser();
        req.unsubscribe();
      });
    }
 
    // Метод удаления пользователя
+  // TODO: Вынести в сервисы? (используется путь /delete)
    delete(user: User) {
-     const req = this.http.post('http://localhost:8083/delete', user).subscribe((res: User) => {
+     const req = this.http.post(`${host}${port}/delete`, user).subscribe((res: User) => {
        req.unsubscribe();
        this.getUsers();
      });
 
   }
+
+  // TODO: Как определить модель списка?
 
   // Метод поиска по емейлу
 //   search(emailSearch: string) {
@@ -88,7 +94,6 @@ export class AppComponent {
 //             // DO SOMETHING
 //       }
 //     }
-//
 //   }
 
   clear(): void {
