@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { User } from '../model'
 import { UserService  } from '../service.service'
@@ -12,6 +12,7 @@ import { UserService  } from '../service.service'
 export class FormComponent implements OnInit {
 
   @Input() user: any;
+  @Output() onAdded = new EventEmitter<any>();
 
   constructor(private http_service: UserService) { }
 
@@ -20,14 +21,15 @@ export class FormComponent implements OnInit {
 
   // Метод добавления пользователя
   // TODO: Вынести в сервисы?
-  add(user: User) {
-    const req = this.http_service.addUser(user).subscribe((rez)=>{
+  add() {
+    const req = this.http_service.addUser(this.user).subscribe((rez)=>{
       req.unsubscribe();
+      this.onAdded.emit(this.user);
       // TODO
       //this.clearUser();
       //this.getUsers();
     })
-    
+
   }
 
 }

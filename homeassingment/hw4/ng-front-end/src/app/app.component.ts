@@ -41,10 +41,12 @@ export class AppComponent {
         this.users = res;
         data.unsubscribe();
      });
-    
+
   }
 
-
+  refreshList(event){
+    this.getUsers();
+  }
 
   // Метод редактирования пользователя
   edit(user: User) {

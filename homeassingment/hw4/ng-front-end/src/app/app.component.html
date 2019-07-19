@@ -32,7 +32,7 @@
 <!-- ADD USERS -->
 <div class="container border p-4 shadow">
   <h2>Add users</h2>
-<app-form [user] = "user"></app-form>
+<app-form [user] = "user" (onAdded)="refreshList($event)"></app-form>
 <!--
   <form action="">
     <p>
