@@ -1,30 +1,27 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import { AppChildComponent } from './app.child.component';
+import { ParentsChildComponent } from './parents.child.component';
 
 @Component({
-  selector: 'app-parent',
+  selector: 'app-parents',
   template: '<div>' +
     'Parrent component' +
     '<p>Some text</p>' +
     '<span>Message from a child: {{ childMessage }}</span>' +
     '<p>Message from Event: "{{message}}"</p>' +
-    // TODO: Ругается что 'recieve Message' не найден.
     '<app-child (messageEvent)="receiveMessage($event)" [childMessage]="parentMessage"></app-child>' +
     '</div>',
   styles: ['div{border:1px solid red; background-color: #ffccaa; padding: 5px;}']
 })
-  export class AppParentComponent implements AfterViewInit {
+  export class ParentsComponent implements AfterViewInit {
   message: any;
   childMessage: string;
   parentMessage = 'Parent message';
 
-  // TODO: Начиная с Angular 8 добавился аргумент в 'ViewChild'
-  @ViewChild(AppChildComponent, {static: false}) child;
+  @ViewChild(ParentsChildComponent, {static: false}) child;
   ngAfterViewInit(): void {
     this.childMessage = this.child.message;
-    // TODO: Требует после () указать ';', ругается что '$event' не найдено, предлагает 'Event'
-    receiveMessage(Event){
-      this.message = Event;
-    }
+  }
+  receiveMessage(Event){
+    this.message = Event;
   }
 }

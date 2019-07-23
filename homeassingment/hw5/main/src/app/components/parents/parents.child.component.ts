@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {DataService} from './data.service';
+import {DataService} from '../../services/data.service';
 
 
 @Component({
@@ -11,13 +11,14 @@ import {DataService} from './data.service';
     '</div>',
   styles: ['div{border:2px solid yellow; background-color: mediumaquamarine; padding: 8px;}']
 })
-export class AppChildComponent {
+
+export class ParentsChildComponent {
   constructor(private dataService: DataService){
-
   }
-  @Input() childMessage: string;
 
+  @Input() childMessage: string;
   message = 'This is a child component';
+
   @Output()  messageEvent = new EventEmitter<string>();
 
   Click(){

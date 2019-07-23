@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border mb-4">
+  <a class="navbar-brand" routerLink="/">Angular Home Work #6</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/parent">Parent component</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Users</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer>
+  <div class="pt-4 border text-center" style="background: #f8f9fa!important; width: 100%; height: 100px; position: fixed; left:0; bottom: 0px;">
+    <h3>Footer</h3>
+    <small>Copyright 2019 &copy;</small>
+  </div>
+</footer>

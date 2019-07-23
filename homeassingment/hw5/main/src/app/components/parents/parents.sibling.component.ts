@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from './data.service';
+import { DataService } from '../../services/data.service';
 
 
 
@@ -11,14 +11,12 @@ import {DataService} from './data.service';
     '</div>',
   styles: ['div{border:1px solid green; background-color: #ffccaa; padding: 5px; margin-top: 10px;}']
 })
-  export class AppSiblingComponent implements OnInit{
+  export class ParentsSiblingComponent implements OnInit{
   constructor(private dataService: DataService){}
 
   ngOnInit(): void {
-    this.dataService.currentMessage.subscribe(() => {
-      console.log('');
-      // TODO: Как отписатся?
-      this.dataService.currentMessage.unsubscribe();
+    let rez = this.dataService.currentMessage;
+    rez.subscribe(() => {
       });
   }
 }
