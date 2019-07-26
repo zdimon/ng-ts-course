@@ -1,0 +1,15 @@
+li {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#deck {
+  position: relative;
+}
+
+#userCards {
+  position: absolute;
+  top: 150px;
+  left: 0;
+}
