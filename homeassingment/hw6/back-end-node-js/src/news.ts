@@ -31,7 +31,6 @@ export const NewsShema = new mongoose.Schema({
 //Создаём экземляр класса
 const News = mongoose.model<INews>('News', NewsShema);
 
-
 //Метод все новости
 export let AllNews = (req: Request, res: Response)=> {
     News.find((err, data:any)=>{
@@ -56,12 +55,24 @@ export let OneNews = (req: Request, res: Response)=> {
 
 //Метод обновления новости
 export let UpdateNews = (req: Request, res: Response)=> {
-    res.send('Update news')
+    News.findByIdAndUpdate({_id:req.params.id}, (err:any, data:any)=>{
+        if (err){
+            res.send('Not found!')
+        }else {
+            res.send(data)
+        }
+    })
 };
 
 //Метод удаления новости
 export let DeleteNews = (req: Request, res: Response)=> {
-    res.send('Return Delete news')
+    News.findByIdAndDelete({_id:req.params.id}, (err:any, data:any)=>{
+        if (err){
+            res.send('Not found!')
+        }else {
+            res.send(data)
+        }
+    })
 };
 
 //Метод создания новости
@@ -70,6 +81,8 @@ export let CreateNews = (req: Request, res: Response)=> {
     news.save((err:any)=>{
         if (err){
             res.send('Error!')
-        }else(news)
+        }else{
+            res.send(news)
+        }
     })
 };
