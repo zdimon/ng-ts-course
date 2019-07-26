@@ -6,7 +6,7 @@ import {FormComponent} from "./news/form/form.component";
 import {ListComponent} from "./news/list/list.component";
 import {DetailComponent} from "./news/detail/detail.component";
 import {HttpClientModule} from "@angular/common/http";
-
+import {  RouterModule } from '@angular/router';
 
 
 
@@ -20,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@ import {DetailComponent} from "./news/detail/detail.component";
 import {FormComponent} from "./news/form/form.component";
 
 const routes: Routes = [
-  {path: '', component: AppComponent},
+  {path: '', component: ListComponent},
   {path: 'add', component: FormComponent},
   {path: 'news', component: ListComponent},
   {path: 'detail', component: DetailComponent},
