@@ -8,8 +8,27 @@ li {
   position: relative;
 }
 
-#userCards {
+#getUserCards {
   position: absolute;
   top: 150px;
-  left: 0;
+  left: 0px;
+}
+
+#userCards {
+  position: absolute;
+  top: -131px;
+  left: 150px;
+  display: inline-flex;
+}
+
+#userCards > div:nth-child(1n+2) {
+  top: calc(100% + 131px);
+}
+
+#desktop {
+  background: forestgreen;
+  width: 100%;
+  height: 250px;
+  border: 2px solid darkgreen;
+  border-radius: 3px;
 }
