@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="shadow border pt-1 px-1">
+    <h2>Table news</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="bg-primary">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let n of news; let i=index">
+      <td>{{i+1}}</td>
+      <td><a routerLink="/news/detail/{{n._id}}">{{n.title}}</a></td>
+      <td>{{n.content}}</td>
+      <td>{{n.author}}</td>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-primary" routerLink="/news/detail/{{n._id}}">View</button>
+          <button class="btn btn-warning" routerLink="/news/form/{{n._id}}">Edit</button>
+          <button class="btn btn-danger" routerLink="/news/{{n._id}}">Delete</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
