@@ -19,7 +19,9 @@ export class DetailComponent implements OnInit {
       this.news_service.getDetail(params['id']).subscribe(data =>{
         this.news = data;
       })
-    })
+    });
   }
+
+
 
 }

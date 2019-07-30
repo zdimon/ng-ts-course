@@ -17,9 +17,10 @@ export class ListComponent implements OnInit {
       this.news = data;
     });
 
-    this.router.params.subscribe(params=>{
-      this.news_service.deleteNews(params['id']).subscribe(() =>{})
-    });
+      //TODO: ПРавильно ли написан метод?
+      this.news_service.deleteNews(this.news._id).subscribe((data:any)=>{
+      this.news = data;
+    })
 
   }
 }

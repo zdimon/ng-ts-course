@@ -9,16 +9,24 @@ import { NewsService } from "../news.service";
 })
 export class FormComponent implements OnInit {
   news:any;
+  edit = false;
+  create = false;
 
   constructor(private news_service: NewsService, private router: ActivatedRoute) { }
 
   ngOnInit() {
     this.router.params.subscribe(params=>{
-      console.log(params['id']);
       this.news_service.getDetail(params['id']).subscribe(data =>{
         this.news = data;
       })
-    })
+    });
+
+  //TODO: Как сделать методы?
+  this.edit = this.news === 0;
+
+  if (!this.news) {
+    this.create = true;
+  }
 
   }
 

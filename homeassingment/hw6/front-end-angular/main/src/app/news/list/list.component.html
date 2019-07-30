@@ -21,8 +21,11 @@
       <td>
         <div class="btn-group">
           <button class="btn btn-primary" routerLink="/news/detail/{{n._id}}">View</button>
-          <button class="btn btn-warning" routerLink="/news/form/{{n._id}}">Edit</button>
-          <button class="btn btn-danger" routerLink="/news/{{n._id}}">Delete</button>
+          <button class="btn btn-warning" routerLink="/news/edit/{{n._id}}">Edit</button>
+
+          <!--// TODO:  Не отрабатывает метод-->
+          <button class="btn btn-danger"  (click)="news_service.deleteNews(n._id)">Delete</button>
+          
         </div>
       </td>
     </tr>
