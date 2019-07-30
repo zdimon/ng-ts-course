@@ -4,21 +4,21 @@
 
       <label for="title" class="col-form-label col-md-4">Title:</label>
       <div class="col-md-12">
-      <input type="text" id="title" placeholder="Title text" class="form-control" value="{{news?.title}}">
+      <input type="text" id="title" placeholder="Title text" class="form-control" name="title" [(ngModel)]="news.title" >
       </div>
       <label for="content" class="col-form-label col-md-4">Content:</label>
       <div class="col-md-12">
-        <textarea id='content' name="" cols="5" rows="5" placeholder="Content text" class="form-control">{{news?.content}}</textarea>
+        <textarea id='content' name="content" cols="5" rows="5" placeholder="Content text" [(ngModel)]="news.content"  class="form-control"></textarea>
       </div>
       <label for="author" class="col-form-label col-md-4">Author:</label>
       <div class="col-md-12">
-        <input type="text" id="author" placeholder="Author name" class="form-control" value="{{news?.author}}">
+        <input type="text" id="author" placeholder="Author name" class="form-control" name="author" [(ngModel)]="news.author" >
       </div>
     </div>
     <br>
 
     <p>
-      <button class="btn btn-success" *ngIf="this.create">Create</button>
+      <button (click)="doCreate()" class="btn btn-success" *ngIf="this.create">Create</button>
       <button class="btn btn-warning" *ngIf="this.edit">Save</button>
     </p>
   </form>

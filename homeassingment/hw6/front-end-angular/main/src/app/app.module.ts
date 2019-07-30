@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NewsModule} from "./news/news.module";
 
+
+
 @NgModule({
   declarations: [
     AppComponent

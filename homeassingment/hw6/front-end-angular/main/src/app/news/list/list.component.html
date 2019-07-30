@@ -24,8 +24,8 @@
           <button class="btn btn-warning" routerLink="/news/edit/{{n._id}}">Edit</button>
 
           <!--// TODO:  Не отрабатывает метод-->
-          <button class="btn btn-danger"  (click)="news_service.deleteNews(n._id)">Delete</button>
-          
+          <button class="btn btn-danger"  (click)="deleteNews(n._id)">Delete</button>
+
         </div>
       </td>
     </tr>

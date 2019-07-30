@@ -21,6 +21,12 @@ export class FormComponent implements OnInit {
       })
     });
 
+    this.news = {
+      title: 'title',
+      content: 'content',
+      author: 'author'
+    }
+
   //TODO: Как сделать методы?
   this.edit = this.news === 0;
 

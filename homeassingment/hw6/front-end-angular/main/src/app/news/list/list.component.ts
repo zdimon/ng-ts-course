@@ -18,9 +18,16 @@ export class ListComponent implements OnInit {
     });
 
       //TODO: ПРавильно ли написан метод?
-      this.news_service.deleteNews(this.news._id).subscribe((data:any)=>{
-      this.news = data;
-    })
 
+
+  }
+
+  deleteNews(id: any){
+    this.news_service.deleteNews(id).subscribe((data:any)=>{
+      this.news = data;
+      this.news_service.getAllNews().subscribe((data:any)=>{
+        this.news = data;
+      });
+    })
   }
 }
