@@ -16,15 +16,10 @@ export class ListComponent implements OnInit {
     this.news_service.getAllNews().subscribe((data:any)=>{
       this.news = data;
     });
-
-      //TODO: ПРавильно ли написан метод?
-
-
   }
 
   deleteNews(id: any){
-    this.news_service.deleteNews(id).subscribe((data:any)=>{
-      this.news = data;
+    this.news_service.deleteNews(id).subscribe(()=>{
       this.news_service.getAllNews().subscribe((data:any)=>{
         this.news = data;
       });
