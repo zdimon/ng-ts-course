@@ -15,27 +15,28 @@ export class FormComponent implements OnInit {
   constructor(private news_service: NewsService, private router: ActivatedRoute) { }
 
   ngOnInit() {
-    this.router.params.subscribe(params=>{
-      this.news_service.getDetail(params['id']).subscribe(data =>{
-        this.news = data;
-      })
-    });
+    //TODO: Сделать метод редактирования новости
+    // this.router.params.subscribe(params=>{
+    //   this.news_service.getDetail(params['id']).subscribe(data =>{
+    //     this.news = data;
+    //   })
+    // });
 
     this.news = {
       title: 'title',
       content: 'content',
       author: 'author'
-    }
+    };
 
-  //TODO: Как сделать методы?
   this.edit = this.news === 0;
 
-  if (!this.news) {
-    this.create = true;
+    if (!this.news) {
+      this.create = true;
+      }
   }
-
-  }
-
-
-
+    //TODO: Не работает метод.
+    createNews(){
+      this.news_service.createNews(this.news).subscribe(()=>{
+        })
+    };
 }
