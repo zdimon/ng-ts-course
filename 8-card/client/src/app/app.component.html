@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>
+    Welcome to Casino!
+  </h1>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-success" [routerLink]="['/online']">Users online</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/room/room_id']">Game room</button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/login']">Login</button>
+  </div>
+
+
+     <router-outlet></router-outlet>
+
+</div>

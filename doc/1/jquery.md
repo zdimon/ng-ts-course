@@ -40,7 +40,7 @@
     </html>
     
     
-    import * as $ from "jquery";
+    import $ from "jquery";
     export function sayhello(name: string){
         let button = $('#myButton');
         let input = $('#myInput');
@@ -48,4 +48,20 @@
             alert(`hello ${input.val()}`)
         })
     }
+        
+Для того. чтобы транспилятор поддерживал такой формат импорта необходимо добавить настройку allowSyntheticDefaultImports
+      
+        
+    {
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,        
+        
+
+[Список всех настроек typescript](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+
+
+
+
+        
         

@@ -1,0 +1,35 @@
+slug: ts-cpo-decorators
+name: Урок 4. Коллбэки, промисы наблюдатели.
+meta_title: Урок 4. Коллбэки, промисы наблюдатели.
+meta_keywords: Урок 4. Коллбэки, промисы наблюдатели.
+meta_description: Урок 4. Коллбэки, промисы наблюдатели.
+is_active: true
+desc: |
+
+        
+files:
+
+    -
+        file:     'cpo.md'
+        title: 'Коллбэки, промисы наблюдатели.'
+        meta_title: 'Коллбэки, промисы наблюдатели.'
+        meta_desc:   'Коллбэки, промисы наблюдатели.'
+        meta_keywords: 'Коллбэки, промисы наблюдатели.'
+        desc: |
+                
+
+    -
+        file:     'decorators.md'
+        title: 'Декораторы'
+        meta_title: 'Декораторы.'
+        meta_desc:   'Декораторы.'
+        meta_keywords: 'Декораторы.'
+        desc: |
+        
+    -
+        file:     'ng-input-output.md'
+        title: 'Ангуляр декораторы @Input @Output.'
+        meta_title: 'Ангуляр декораторы @Input @Output..'
+        meta_desc:   'Ангуляр декораторы @Input @Output..'
+        meta_keywords: 'angular decorators input output.'
+        desc: |

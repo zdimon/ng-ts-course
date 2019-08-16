@@ -1,0 +1,10 @@
+<div class="container">
+  <h1> Welcome to Casino! {{ is_logined  }} </h1>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-success" [routerLink]="['/online']">Users online</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/room/room_id']">Game room</button>
+    <button *ngIf="!is_logined" type="button" class="btn btn-primary" [routerLink]="['/login']">Login</button>
+    <button *ngIf="is_logined" type="button" class="btn btn-primary" (click)="doLogout()">Logout</button>
+  </div>
+     <router-outlet></router-outlet>
+</div>

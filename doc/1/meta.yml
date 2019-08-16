@@ -1,0 +1,61 @@
+slug: typescript
+name: Урок 1. Установка Typescript. Начало использования.
+meta_title: Установка Typescript. Начало использования.
+meta_keywords: Установка Typescript. Начало использования.
+meta_description: Установка Typescript. Начало использования.
+is_active: true
+desc: |
+
+    1. Установка и настройка typescript
+    
+    2. Загрузчик модулей SystemJS
+    
+    3. Использование jquery.
+    
+    4. Объявление переменных. Типы данных.
+        
+files:
+
+    -
+        file:     'install.md'
+        title: 'Установка и настройка typescript'
+        meta_title: 'Установка'
+        meta_desc:   'Установка'
+        meta_keywords: 'Установка'
+        desc: |
+        
+            # Первые шаги.
+            # Модульность
+            # Загрузка модулей           
+            
+    -
+        file:     'systemjs.md'
+        title: 'Загрузчик модулей SystemJS'
+        meta_title: 'Загрузчик модулей SystemJS'
+        meta_desc:   'Загрузчик модулей SystemJS'
+        meta_keywords: 'Загрузчик модулей SystemJS'
+        desc: |
+      
+      
+    -
+        file:     'jquery.md'
+        title: 'Использование jquery'
+        meta_title: 'Использование jquery'
+        meta_desc:   'Использование jquery'
+        meta_keywords: 'Использование jquery'
+        desc: |     
+        
+        
+    -
+        file:     'data-types.md'
+        title: 'Объявление переменных. Типы данных.'
+        meta_title: 'Объявление переменных. Типы данных.'
+        meta_desc:   'Объявление переменных. Типы данных.'
+        meta_keywords: 'Объявление переменных. Типы данных.'
+        desc: | 
+        
+        
+        
+        
+        
+        

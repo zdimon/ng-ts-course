@@ -1,0 +1,26 @@
+slug: ts-nodejs
+name: Урок 3. Сервер на базе NodeJS.
+meta_title: Урок 3. Сервер на базе NodeJS.
+meta_keywords: Урок 3. Сервер на базе NodeJS.
+meta_description: Урок 3. Сервер на базе NodeJS.
+is_active: true
+desc: |
+
+        
+files:
+
+    -
+        file:     'simple-server.md'
+        title: 'Простой сервер.'
+        meta_title: 'Простой сервер.'
+        meta_desc:   'Простой сервер.'
+        meta_keywords: 'Простой сервер.'
+        desc: |
+                
+    -
+        file:     'ng-http.md'
+        title: 'HTTP запросы в Ангуляр.'
+        meta_title: 'HTTP запросы в Ангуляр.'
+        meta_desc:   'HTTP запросы в Ангуляр.'
+        meta_keywords: 'HTTP запросы в Ангуляр.'
+        desc: |

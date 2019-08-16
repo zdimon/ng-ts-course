@@ -1,0 +1,34 @@
+slug: mongodb
+name: Урок 6. Работа с базой данных MongoDB и SQLite.
+meta_title: Урок 6. Работа с базой данных MongoDB и SQLite.
+meta_keywords: Урок 6. Работа с базой данных MongoDB и SQLite.
+meta_description: Урок 6. Работа с базой данных MongoDB и SQLite.
+is_active: true
+desc: |
+
+        
+files:
+
+    -
+        file:     'mongodb.md'
+        title: 'MongoDB.'
+        meta_title: 'MongoDB.'
+        meta_desc:   'MongoDB.'
+        meta_keywords: 'MongoDB.'
+        desc: 
+        
+    -
+        file:     'ng-crud.md'
+        title: 'Ангуляр. CRUD операции.'
+        meta_title: 'Ангуляр. CRUD операции.'
+        meta_desc:   'Ангуляр. CRUD операции.'
+        meta_keywords: 'Ангуляр. CRUD операции.'
+        desc:         
+
+    -
+        file:     'sqlite.md'
+        title: 'SQLite.'
+        meta_title: 'SQLite.'
+        meta_desc:   'SQLite.'
+        meta_keywords: 'SQLite.'
+        desc: 
